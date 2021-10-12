@@ -1,0 +1,136 @@
+Project #7: Triangle Area Calculator
+Write a program that calculates area of a triangle, given its 3 points (A, B and C) in the Descartes
+coordinate system.
+- Input:
+Point A (x, y): 10 20
+Point B (x, y): 10 60
+Point C (x, y): 80 20
+- Output:
+Area = 1400
+
+Code: 
+public class Main
+{
+	public static void main(String args[])
+	{
+		Point A=new Point(10,20);
+		Point B=new Point(10,60);
+		Point C=new Point(80,20);
+		System.out.println(Triangle.area(A,B,C));
+	}
+}
+
+class Point
+{
+	int x,y;
+	public Point(int x, int y)
+	{
+		this.x=x;
+		this.y=y;
+	}
+}
+
+class Triangle
+{
+	public static float area(Point A, Point B, Point C)
+	{
+		float area=(A.x*(B.y-C.y)+B.x*(C.y-A.y)+C.x*(A.y-B.y))/2.0f;
+		return Math.abs(area);
+	}
+}
+
+
+Project #4: Fibonacci Sequence
+Write a program that prints the Fibonacci sequence numbers less than a given number N. For
+example:
+- Input: N = 10 Output: 1 1 2 3 5 8
+- Input: N = 30 Output: 1 1 2 3 5 8 13 21
+- Input: N = 60 Output: 1 1 2 3 5 8 13 21 34 55
+Code:
+import java.util.*;
+
+class Fibo
+{
+	static void Fibonacci(int n)
+	{
+		int n1=0,n2=1,i,c=0;
+		c=n1+n2;
+		System.out.println(n1+"");
+		System.out.println(n2+"");
+		while(c<n)
+		{
+			System.out.println(c+"");
+			n1=n2;
+			n2=c;
+			c=n2+n1;
+		}
+	}
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		Fibonacci(n);
+	}
+}
+
+
+Project #5: Case Changer
+Write a program that can change a given input string to the following types of case:
+- All upper case
+- All lower case
+- Capitalize (capitalize the first letter of each word)
+- Sentence case (capitalize the first letter of the first word in a sentence)
+- Invert: lower to upper and upper to lower
+Here’s an example:
+- Input:
+Mary has a little dog. she calls him Pun
+- Output:
+Upper case:
+MARY HAS A LITTLE DOG. SHE CALLS HIM PUN
+Lower case:
+mary has a little dog. she calls him pun
+Capitalize:
+Mary Has A Little Dog. She Calls Him Pun
+Sentence case:
+Mary has a little dog. She calls him pun
+Invert:
+mARY HAS A LITTLE DOG. SHE CALLS HIM pUN
+Code: 
+import java.util.*;
+
+public class CaseChanger
+{
+	public static void main(String args[])
+	{
+		char ch=0;
+		Scanner sc=new Scanner(System.in);
+		String str=sc.nextLine();
+		//System.out.println("String in Lower case"+str);
+		int len=str.length();
+		StringBuffer strBuf=new StringBuffer(len);
+		int i;
+		for(i=0;i<len;i++)
+		{
+			ch=str.charAt(i);
+			if(Character.isTitleCase(ch))
+			{
+				//System.out.println("String in Lowercase");
+				ch=Character.toLowerCase(ch);
+			}
+			if(Character.isUpperCase(ch))
+			{
+				//System.out.println("String in Lowercase");
+				ch=Character.toLowerCase(ch);
+			}
+			if(Character.isLowerCase(ch))
+			{
+				//System.out.println("String in Uppercase");
+				ch=Character.toUpperCase(ch);
+			}
+			strBuf.append(ch);
+		}
+		System.out.println("Converting String: "+strBuf.toString());
+	}
+}
+
+
